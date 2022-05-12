@@ -1,0 +1,17 @@
+<h1>Miembros de Mi Familia</h1>
+<a href="{% url 'agregar' %}">Agregar</a>
+<br>
+<br>
+{% if personas %}
+    {% for p in personas %}
+        <li> Identificador: {{p.id}} </li>
+        <li> Nombre: {{p.nombre}} </li>
+        <li> Apellido: {{p.apellido}} </li>
+        <li> email: {{p.email}} </li>
+        <a href="{% url 'borrar' identificador=p.id %}"> borrar </a>
+        <br>
+        <br>
+    {% endfor %}
+{% else %}
+    <p>No tienes familiares cargados</p>
+{% endif %}
