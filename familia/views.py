@@ -1,4 +1,4 @@
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseBadRequest
 from django.template import loader
 from django.shortcuts import render
 from familia.forms import PersonaForm
@@ -15,6 +15,11 @@ def index(request):
 
 
 def agregar(request):
+    '''
+    TODO: agregar un mensaje en el template index.html que avise al usuario que 
+    la persona fue cargada con éxito
+    '''
+
     if request.method == "POST":
         form = PersonaForm(request.POST)
         if form.is_valid():
@@ -25,19 +30,31 @@ def agregar(request):
             Persona(nombre=nombre, apellido=apellido, email=email).save()
 
             return HttpResponseRedirect("/familia/")
-    else:
+    elif request.method == "GET":
         form = PersonaForm()
+    else:
+        return HttpResponseBadRequest("Error no conzco ese metodo para esta request")
+
     
     return render(request, 'familia/form_carga.html', {'form': form})
 
 
 def borrar(request, identificador):
-    persona = Persona.objects.filter(id=int(identificador)).first()
+    '''
+    TODO: agregar un mensaje en el template index.html que avise al usuario que 
+    la persona fue eliminada con éxito        
+    '''
+    if request.method == "DELETE":
+        persona = Persona.objects.filter(id=int(identificador)).first()
+        if persona:
+            persona.delete()
+        return HttpResponseRedirect("/familia/")
+    else:
+        return HttpResponseBadRequest("Error no conzco ese metodo para esta request")
 
-    if persona:
-        persona.delete()
-    
-    #TODO: agregar un mensaje en el template index.html que avise al usuario que 
-    # la persona fue eliminada con éxito
 
-    return HttpResponseRedirect("/familia/")
+def actualizar(request, identificador):
+    '''
+    TODO: implementar una vista para actualización
+    '''
+    pass
