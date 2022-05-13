@@ -44,7 +44,7 @@ def borrar(request, identificador):
     TODO: agregar un mensaje en el template index.html que avise al usuario que 
     la persona fue eliminada con éxito        
     '''
-    if request.method == "DELETE":
+    if request.method == "GET":
         persona = Persona.objects.filter(id=int(identificador)).first()
         if persona:
             persona.delete()
