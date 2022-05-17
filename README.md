@@ -45,6 +45,17 @@ $ pip install django
 Si no arrojo errores esto es suficiente para poder correr el projecto.
 
 
+# Instalar django bootstrap v5
+
+```PS
+C:\> pip install django-bootstrap-v5
+```
+
+Linux/Mac:
+
+```bash
+$ pip install django-bootstrap-v5
+```
 ## Clonar el projecto con git
 
 windows:
