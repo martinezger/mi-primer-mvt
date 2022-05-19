@@ -8,3 +8,5 @@ class PersonaForm(forms.Form):
     fecha_nacimiento = forms.DateField(label="fecha_nacimiento", input_formats=["%d/%m/%Y"],
     #widget es para poder agregar un tip para que el usuario sepa como ingresar la fecha
     widget=forms.TextInput(attrs={'placeholder': '30/12/1995'}))
+    altura = forms.FloatField(widget=forms.NumberInput(attrs={'placeholder': "1.75 m"}))
+

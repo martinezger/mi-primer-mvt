@@ -27,6 +27,7 @@
                 <th scope="col">Apellido</th>
                 <th scope="col">Email</th>
                 <th scope="col">Fecha Nacimiento</th>
+                <th scope="col">Altura</th>
                 <th scope="col">Acciones</th>
             </thead>
         
@@ -38,6 +39,7 @@
                     <td> {{p.apellido}} </td>
                     <td> {{p.email}} </td>
                     <td> {{p.fecha_nacimiento}} </td>
+                    <td> {{p.altura}} m</td>
                     {% url 'borrar' identificador=p.id as borrar_url %}
                     <td>{% bootstrap_button "Borrar" size="sm" button_class="btn-danger" button_type="link" href=borrar_url %}</td>
                 </tr>  
