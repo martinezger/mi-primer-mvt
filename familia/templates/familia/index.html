@@ -7,18 +7,24 @@
 {# Display django.contrib.messages as Bootstrap alerts #}
 {% bootstrap_messages %}
 
+<ul class="nav bg-dark fixed">
+  <li class="nav-item">
+    <a class="nav-link active" href="/familia"> Miembros de Mi Familia</a>
+  </li>
+</ul>
 
-<div class="container">
-    <div class="row">
-      <div class="col">
-        <h1>Miembros de Mi Familia</h1>
-        {% url 'agregar' as agregar_url %}
-        {% bootstrap_button "Agregar" size="sm" button_class="btn-primary" button_type="link" href=agregar_url %}
 
-      </div>
-      </div>
-      <dov class="row">
-      <div class="col">
+<div class="container">    
+  
+  <div class="row">
+    <div class="col">
+      {% url 'agregar' as agregar_url %}
+      {% bootstrap_button "Agregar" button_class="btn-success" button_type="link" href=agregar_url %}  
+    <div>
+  <div>
+
+  <div class="row">
+    <div class="col">
         {% if personas %}
         <table class="table">
             <thead>
@@ -49,7 +55,12 @@
         {% else %}
             <p>No tienes familiares cargados</p>
         {% endif %}
-      </div>
     </div>
   </div>
+</div>
   
+<ul class="nav bg-dark fixed-bottom justify-content-center">
+  <li class="nav-item">
+    <a class="nav-link active" href="/familia">coder house - python 36585 - {% now 'd-m-Y' %}</a>
+  </li>
+</ul>
