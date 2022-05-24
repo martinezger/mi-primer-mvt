@@ -7,7 +7,7 @@ from familia.models import Persona
 
 def index(request):
     personas = Persona.objects.all()
-    template = loader.get_template('familia/index.html')
+    template = loader.get_template('familia/lista_familiares.html')
     context = {
         'personas': personas,
     }

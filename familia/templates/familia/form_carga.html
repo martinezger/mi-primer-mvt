@@ -1,20 +1,15 @@
+{% extends "familia/index.html" %}
+
 {% load bootstrap5 %}
 
-{# Load CSS and JavaScript #}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
-
-{# Display django.contrib.messages as Bootstrap alerts #}
-{% bootstrap_messages %}
-
-
+{% block cuerpo %}
 <div class="container">
    <div class="row">
      <div class="col">
       <h1>CARGAR UN FAMILIAR</h1>
      </div>
      </div>
-     <dov class="row">
+     <div class="row">
      <div class="col">
       <form action="/familia/agregar/" method="post">
          {% csrf_token %} 
@@ -24,4 +19,5 @@
      </div>
    </div>
  </div>
- 
+{% endblock %}
+

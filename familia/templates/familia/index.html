@@ -7,58 +7,17 @@
 {# Display django.contrib.messages as Bootstrap alerts #}
 {% bootstrap_messages %}
 
+<!-- <esto es la cabecera/header> -->
 <ul class="nav bg-dark fixed">
   <li class="nav-item">
-    <a class="nav-link active" href="/familia"> Miembros de Mi Familia</a>
+    <a class="nav-link active" href="{%url  'index' %}"> Miembros de Mi Familia</a>
   </li>
 </ul>
 
+{% block  cuerpo %}
+{% endblock %}
 
-<div class="container">    
-  
-  <div class="row">
-    <div class="col">
-      {% url 'agregar' as agregar_url %}
-      {% bootstrap_button "Agregar" button_class="btn-success" button_type="link" href=agregar_url %}  
-    <div>
-  <div>
-
-  <div class="row">
-    <div class="col">
-        {% if personas %}
-        <table class="table">
-            <thead>
-                <th scope="col">Identificador</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Apellido</th>
-                <th scope="col">Email</th>
-                <th scope="col">Fecha Nacimiento</th>
-                <th scope="col">Altura</th>
-                <th scope="col">Acciones</th>
-            </thead>
-        
-            {% for p in personas %}
-            <tbody>
-                <tr>
-                    <th scope="row">{{p.id}} </th>
-                    <td> {{p.nombre}} </td>
-                    <td> {{p.apellido}} </td>
-                    <td> {{p.email}} </td>
-                    <td> {{p.fecha_nacimiento}} </td>
-                    <td> {{p.altura}} m</td>
-                    {% url 'borrar' identificador=p.id as borrar_url %}
-                    <td>{% bootstrap_button "Borrar" size="sm" button_class="btn-danger" button_type="link" href=borrar_url %}</td>
-                </tr>  
-            </tbody>
-            {% endfor %}
-        </table>
-        {% else %}
-            <p>No tienes familiares cargados</p>
-        {% endif %}
-    </div>
-  </div>
-</div>
-  
+<!-- <esto es el pie/ footer > -->
 <ul class="nav bg-dark fixed-bottom justify-content-center">
   <li class="nav-item">
     <a class="nav-link active" href="/familia">coder house - python 36585 - {% now 'd-m-Y' %}</a>
