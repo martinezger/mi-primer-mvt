@@ -88,5 +88,5 @@ Listo ya tenes corriendo el ejemplo.
 
 ahora Hace click en el siguiente link para ver el ejemplo corriendo: 
 
-[http://localhost:8000/familia/](http://localhost:8000/)
+[http://localhost:8000/](http://localhost:8000/)
 
