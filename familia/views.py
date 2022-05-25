@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseBadRequest
 from django.template import loader
 from django.shortcuts import render
-from familia.forms import PersonaForm
+from familia.forms import PersonaForm, BuscarPersonasForm
 
 from familia.models import Persona
 
@@ -31,7 +31,7 @@ def agregar(request):
             altura = form.cleaned_data['altura']
             Persona(nombre=nombre, apellido=apellido, email=email, fecha_nacimiento=fecha_nacimiento, altura=altura).save()
 
-            return HttpResponseRedirect("/familia/")
+            return HttpResponseRedirect("/")
     elif request.method == "GET":
         form = PersonaForm()
     else:
@@ -60,3 +60,18 @@ def actualizar(request, identificador):
     TODO: implementar una vista para actualización
     '''
     pass
+
+
+def buscar(request):
+    if request.method == "GET":
+        form_busqueda = BuscarPersonasForm()
+        return render(request, 'familia/form_busqueda.html', {"form_busqueda": form_busqueda})
+
+    elif request.method == "POST":
+        form_busqueda = BuscarPersonasForm(request.POST)
+        if form_busqueda.is_valid():
+            palabra_a_buscar = form_busqueda.cleaned_data['palabra_a_buscar']
+            personas = Persona.objects.filter(nombre__icontains=palabra_a_buscar)
+
+        return  render(request, 'familia/lista_familiares.html', {"personas": personas})
+    
