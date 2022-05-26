@@ -11,10 +11,22 @@
      </div>
      <div class="row">
      <div class="col">
-      <form action="{% url  'agregar'%}" method="post">
-         {% csrf_token %} 
-         {% bootstrap_form form %}
-         {% bootstrap_button "Guardar" button_type="submit" button_class="btn-primary" %}
+       
+      {% if actualizar %}
+          <form action="{% url  'actualizar_action' %}" method="post">
+      {% else %}     
+          <form action="{% url  'agregar'%}" method="post">
+      {% endif %}
+
+      {% csrf_token %} 
+      {% bootstrap_form form %}
+    
+      {% if actualizar %}
+        {% bootstrap_button "Actualizar" button_type="submit" button_class="btn-primary" %} 
+      {% else %}
+        {% bootstrap_button "Guardar" button_type="submit" button_class="btn-primary" %}
+      {% endif %}
+      
       </form>
      </div>
    </div>

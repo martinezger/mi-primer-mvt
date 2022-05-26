@@ -2,8 +2,13 @@
 
 {% load bootstrap5 %}
 
+
 {% block cuerpo %}
 <div class="container">    
+
+  {% if resultados_busqueda %}
+    <h1>Resultados de la busqueda</h1>
+  {%endif%}
   
   <div class="row">
     <div class="col">
@@ -37,9 +42,14 @@
                     <td> {{p.email}} </td>
                     <td> {{p.fecha_nacimiento}} </td>
                     <td> {{p.altura}} m</td>
-                    {% url 'borrar' identificador=p.id as borrar_url %}
-                    <td>{% bootstrap_button "Borrar" size="sm" button_class="btn-danger" button_type="link" href=borrar_url %}</td>
-                </tr>  
+                    <td>
+                      {% url 'borrar' identificador=p.id as borrar_url %}
+                      {% url 'actualizar' identificador=p.id as actualizar_url %} 
+                      {% bootstrap_button "Borrar" size="sm" button_class="btn-danger" button_type="link" href=borrar_url %}
+                      {% bootstrap_button "Actualizar" size="sm" button_class="btn-warning" button_type="link" href=actualizar_url %}
+
+                    </td>
+                </tr>
             </tbody>
             {% endfor %}
         </table>
