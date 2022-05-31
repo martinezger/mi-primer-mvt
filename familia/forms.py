@@ -10,5 +10,10 @@ class PersonaForm(forms.Form):
     widget=forms.TextInput(attrs={'placeholder': '30/12/1995'}))
     altura = forms.FloatField(widget=forms.NumberInput(attrs={'placeholder': "1.75 m"}))
 
+
+class ActualizarPersonaForm(PersonaForm):
+    id = forms.IntegerField(widget = forms.HiddenInput())
+
+
 class BuscarPersonasForm(forms.Form):
     palabra_a_buscar = forms.CharField(label="Buscar")
